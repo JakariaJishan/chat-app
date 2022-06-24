@@ -4,7 +4,9 @@ const mongoose = require("mongoose");
 const path = require("path");
 const { notFoundHandler, errorHandler } = require("./middlewares/common/errors");
 const cookieParser = require("cookie-parser");
-
+const logInRoute =  require("./routes/logInRoute")
+const usersRoute =  require("./routes/usersRoute")
+const inboxRoute =  require("./routes/inboxRoute")
 
 const app = express();
 dotenv.config();
@@ -33,6 +35,9 @@ app.use(express.static(path.join(__dirname, 'public')))
 app.use(cookieParser(process.env.COOKIE_SECRET))
 
 //routing setup
+app.use('/', logInRoute);
+app.use('/users', usersRoute);
+app.use('/inbox', inboxRoute);
 
 //error handling
 app.use(notFoundHandler)
