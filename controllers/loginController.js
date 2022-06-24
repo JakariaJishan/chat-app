@@ -1,7 +1,5 @@
 function getLogIn(req, res, next) {
-  res.render("login", {
-    title: "login chat-app",
-  });
+  res.render("login");
 }
 
 module.exports = {
